@@ -33,3 +33,8 @@ PC-carwash is a versatile and user-friendly FiveM script that enhances your serv
 
 https://github.com/Valocai/pc-carwash/assets/84250638/8eaf2160-9444-4567-9758-b147660fa6f8
 
+
+
+
+JOIN THE DISCORD FOR SUPPORT! https://discord.gg/F5sMc8Bh8k
+
