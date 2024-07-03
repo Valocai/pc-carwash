@@ -23,21 +23,27 @@ for i, zone_data in pairs(Config.Locations) do
 end
 
 local function washCar()
-    assert(cache.vehicle, "Player not in a vehicle")
-    local success = lib.progressBar({
-        duration = (Config?.Settings?.wash_time or 10) * 1000, -- if Config.time is not defined then it defaults to 10000 (10s)
-        label = 'Washing Vehicle.',
-        useWhileDead = false,
-        canCancel = true,
-        disable = {
-            move = true,
-            vehicle = true,
-            combat = true, 
-        },
-    })
-    if not success then return false, lib.notify({description = "Car washing cancelled"}) end
-    SetVehicleDirtLevel(cache.vehicle, 0.0)
-    return true
+    assert(IsPedInAnyVehicle(PlayerPedId(), false), "Player not in a vehicle")
+    local playerVeh = GetVehiclePedIsIn(PlayerPedId(), false)
+    
+    local initialDirtLevel = GetVehicleDirtLevel(playerVeh)
+    local targetDirtLevel = 0.0
+    local currentTime = 0
+    local totalTime = Config.Settings.wash_time * 800 
+    
+    while currentTime < totalTime do
+        Citizen.Wait(800)  
+        
+        
+        local progress = currentTime / totalTime
+        
+        
+        local currentDirtLevel = initialDirtLevel * (1 - progress) + targetDirtLevel * progress
+
+        SetVehicleDirtLevel(playerVeh, currentDirtLevel)
+        
+        currentTime = currentTime + 800  
+    end
 end
 
 lib.addKeybind({
