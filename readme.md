@@ -12,6 +12,8 @@ PC-carwash is a versatile and user-friendly FiveM script that enhances your serv
 - Comes with 2 default carwashes (Davis and Strawberry)
 - User friendly.
 - Welcome message when entering the carwash and exit message when leaving it.
+- Customize how long it takes the wash the car
+- The time taken to wash the car depends on the level of dirt.
 
 ## Installation
 
